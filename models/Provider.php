@@ -2,7 +2,7 @@
 namespace app\models;
 
 use Yii;
-use yii\base\Model;
+use yii\db\ActiveRecord;
 
 /**
  * Modelo para a tabela "Provider".
@@ -23,26 +23,10 @@ use yii\base\Model;
  * Magnusbilling.com <info@magnusbilling.com>
  * 25/06/2012
  */
-
-namespace app\models;
-
-use Yii;
-use yii\db\ActiveRecord;
-
-class  Provider extends ActiveRecord
+class Provider extends ActiveRecord
 {
-    protected $_module = 'provider';
     /**
-     * Retorna a classe estatica da model.
-     * @return Provider classe estatica da model.
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
-
-    /**
-     * @return nome da tabela.
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -50,7 +34,7 @@ class  Provider extends ActiveRecord
     }
 
     /**
-     * @return nome da(s) chave(s) primaria(s).
+     * {@inheritdoc}
      */
     public static function primaryKey()
     {
@@ -58,17 +42,15 @@ class  Provider extends ActiveRecord
     }
 
     /**
-     * @return array validacao dos campos da model.
+     * {@inheritdoc}
      */
     public function rules()
     {
-        $rules = [
+        return [
             [['provider_name'], 'required'],
             [['description'], 'string', 'max' => 100],
-            [['credit_control'], 'number'],
-            [['credit'], 'number'],
+            [['credit_control', 'credit'], 'number'],
             [['provider_name'], 'unique'],
         ];
-        return $rules;
     }
 }

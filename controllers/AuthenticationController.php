@@ -110,6 +110,7 @@ class AuthenticationController extends Controller
             $mail = new Mail(Mail::$TYPE_SIGNUPCONFIRM, $modelUser->id);
             $mail->send();
         }
+        
 
 
         if (!$modelUser) {
@@ -171,7 +172,7 @@ class AuthenticationController extends Controller
         Yii::$app->session->setFlash('success', 'Welcome to login!');
         return $this->asJson([
             'success' => Yii::$app->session->get('username'),
-            'msg' => Yii::$app->session->get('name_user'),
+            'msg' => Yii::$app->session->get('username'),
         ]);
         // return $this->redirect(['authentication/index']); 
     }

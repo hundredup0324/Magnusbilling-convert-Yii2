@@ -12,9 +12,12 @@ use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 use yii\base\ViewNotFoundException;
 use yii\web\JsExpression;
+use yii\data\ActiveDataProvider;
+use app\models\Provider;
 
 
-class VelzonController extends Controller
+
+class RouteController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -58,16 +61,42 @@ class VelzonController extends Controller
         ];
     }
 
-    public function actionIndex()
+    public function actionProvider()
     {
-        
-       if (Yii::$app->session->get('logged')) {
+       
+        $query = Provider::find();
+
+    $provider = new ActiveDataProvider([
+        'query' => $query,
+        'pagination' => [
+            'pageSize' => 10,
+        ],
+        'sort' => [
+            'defaultOrder' => [
+                'id' => SORT_DESC,
+                'provider_name' => SORT_ASC,
+            ]
+        ],
+    ]);
+
+    // Extract data from ActiveDataProvider
+    $data = array_map(function ($model) {
+        return $model->attributes;
+    }, $provider->getModels());
+
+    $this->layout = 'magnus_layout';
+
+    return $this->render('provider', [
+        'dataProvider' => $data,  // Pass extracted data
+        'gridColumns' => [],
+        'searchModel' => []
+    ]);
+    }
+    public function actionTrunk()
+    {
+       
         $this->layout = 'magnus_layout';
-        return $this->render('index', ["username"=>Yii::$app->session->get('username')]);
-       } else {
-        return $this->redirect(['authentication/index']);
-       }
-        
+        return $this->render('trunk');
     }
 
     public function actionRoot($action = '')

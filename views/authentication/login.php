@@ -238,7 +238,9 @@ use yii\helpers\Url;
                 .then(data => {
                     if (data.success) {
                         // toastr.success('Welcome to login!');
-                        localStorage.setItem('loginSuccessMessage', 'Welcome to login!');
+                        localStorage.setItem('loginSuccessMessage', `Welcome ${data.success}!`);
+                        localStorage.setItem('username', data.success);
+                        console.log("dsfs");
                         window.location.href = "<?= Url::to(['velzon/index']) ?>";
                        
                     } else {

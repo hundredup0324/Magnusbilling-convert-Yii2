@@ -898,8 +898,7 @@ use yii\web\JsExpression;
     <<script>
         $(document).ready(function() {
         var successMessage = localStorage.getItem('loginSuccessMessage');
-        console.log('Success message:', successMessage);
-        console.log('Success:', <?php $username?>); // Debugging line
+        console.log('Success message:', successMessage); // Debugging line
         if (successMessage) {
         toastr.success(successMessage);
         localStorage.removeItem('loginSuccessMessage'); // Clear after showing
