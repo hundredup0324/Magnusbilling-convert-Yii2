@@ -45,7 +45,7 @@ use yii\helpers\Url;
                 <div class="collapse menu-dropdown" id="sidebarDashboards">
                     <ul class="nav nav-sm flex-column">
                         <li class="nav-item">
-                            <?= Html::a('Users', ['client/user'], ['class' => 'nav-link', 'data-key' => 't-crm']) ?>
+                            <?= Html::a('Users', ['client/user'], ['class' => 'nav-link', 'data-key' => 't-clientuser']) ?>
                         </li>
                         <li class="nav-item">
                             <a href="dashboard-crm" class="nav-link" data-key="t-crm"> SIP Users </a>
@@ -245,10 +245,14 @@ use yii\helpers\Url;
                             <div class="col-lg-4">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="ui-alerts" class="nav-link" data-key="t-alerts">Providers</a>
+                                    <?= Html::a('Providers', ['route/provider'], ['class' => 'nav-link', 'data-key' => 't-alerts']) ?>
+                                        <!-- <a href="ui-alerts" class="nav-link" data-key="t-alerts">Providers</a> -->
                                     </li>
                                     <li class="nav-item">
-                                        <a href="ui-badges" class="nav-link" data-key="t-badges">Trunks</a>
+                                        <!-- <a href="ui-badges" class="nav-link" data-key="t-badges">Trunks</a> -->
+                                    <?= Html::a('Trunks', ['route/trunk'], ['class' => 'nav-link', 'data-key' => 't-clientuser']) ?>
+
+                                        <!-- <a href="ui-badges" class="nav-link" data-key="t-badges">Trunks</a> -->
                                     </li>
                                     <li class="nav-item">
                                         <a href="ui-buttons" class="nav-link" data-key="t-buttons">Trunks Groups</a>

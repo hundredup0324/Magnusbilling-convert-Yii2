@@ -77,6 +77,15 @@ $config = [
                 '<action>' => '/velzon/root'
             ],
         ],
+        'session' => [
+        'class' => 'yii\web\Session',
+        'timeout' => 3600, // Session timeout in seconds
+        'name' => 'user', // Custom session name
+        'cookieParams' => [
+            'httpOnly' => true, // Makes session cookie accessible only through HTTP protocol
+            'secure' => true, // If true, requires HTTPS to transmit session cookie
+        ],
+    ],
         'i18n' => [
             'translations' => [
 
